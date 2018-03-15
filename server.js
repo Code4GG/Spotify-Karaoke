@@ -7,6 +7,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const db = require("./models");
+const exphbs = require("express-handlebars");
 
 // Sets up the Express App
 // =============================================================
@@ -20,10 +21,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 
+// Starts the server to begin listening
+// =======
 db.sequelize.sync().then(function(){
 	app.listen(PORT, function() {
 	  console.log("App listening on PORT " + PORT);
 	});
 })
-// Starts the server to begin listening
-// =============================================================
+
