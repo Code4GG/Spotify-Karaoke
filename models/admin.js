@@ -3,7 +3,6 @@ module.exports = function(sequelize, datatypes){
     name: datatypes.STRING,
     email: datatypes.STRING,
     pass: datatypes.STRING,
-    phone: datatypes.STRING,
     admin_access: datatypes.BOOLEAN
   });
   return admins;

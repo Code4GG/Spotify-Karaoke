@@ -28,8 +28,8 @@ app.use(method('_method'));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-const routes = require("./controllers/burgers_controller.js");
-app.use(routes)
+const routes = require("./controllers/karaoke_controller.js");
+app.use(routes);
 // Starts the server to begin listening
 // =======
 db.sequelize.sync().then(function(){
