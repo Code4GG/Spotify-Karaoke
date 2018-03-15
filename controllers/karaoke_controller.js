@@ -39,7 +39,8 @@ router.post('/api/admins', function(req,res){
 
 router.post('/api/searched_songs', function(res,res){
 	searched_songs.create({
-		song: req.body.song
+		song: req.body.song,
+		song_played: false
 	})
 })
 
