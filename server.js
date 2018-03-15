@@ -15,6 +15,8 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Sets up the Express app to handle data parsing
+// express middleware needed for serving static files. For more details
+app.use(express.static("public"));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,7 +28,8 @@ app.use(method('_method'));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-
+const routes = require("./controllers/burgers_controller.js");
+app.use(routes)
 // Starts the server to begin listening
 // =======
 db.sequelize.sync().then(function(){
