@@ -11,6 +11,7 @@
     "method-override": "^2.3.10",
     "musicmatch": "^0.2.6",
     "mysql": "^2.15.0",
+    "mysql2": "^1.5.2",
     "node-spotify-api": "^1.0.7",
     "request": "^2.85.0",
     "sequelize": "^4.36.1",
