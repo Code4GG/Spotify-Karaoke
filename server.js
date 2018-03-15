@@ -19,6 +19,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 
+//requiring handlebars
+const exphbs = require("express-handlebars");
+
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
