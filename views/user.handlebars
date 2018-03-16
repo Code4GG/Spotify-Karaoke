@@ -1,16 +1,76 @@
 {{!-- user facing page --}}
-
 <div class="container">
-	<div class="jumbrotron">
-		<h1>A Karaoke App to Be Named Later</h1>
-		<h3>Search and sing your favorite tunes!</h3>
-	</div>
-
 	<a href="/add"></a><button type="button" class="btn btn-success btn-lg" id="user-add">Sign up</button>
 	
 	<a href="/search"></a><button type="button" class="btn btn-success btn-lg" id="song-search">Song Search</button>
 </div>
 
-<div class="song-queue">
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalTitle">Search for a song</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+      		</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label for="name">Name</label>
+						<input type="name" class="form-control" id="inputName" placeholder="Enter email">
+						<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+					</div>					
+					<div class="form-group">
+						<label for="email">Email address</label>
+						<input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+					</div>
+					<div class="form-group">
+						<label for="phone">Phone Number</label>
+						<input type="phone" class="form-control" id="inputPhone" placeholder="Phone Number">
+					</div>
 
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalTitle">Search for a song</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+      		</div>
+			<div class="modal-body">
+					<div class="form-group">
+						<label for="searched_song">Email address</label>
+						<input type="searched_song" class="form-control" id="inputSearch" placeholder="Search for a song">
+					</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Search</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="song-queue">
+	<ul>
+		<li>
+			{{#each songs}}
+				<p>{{this.song song_played=false}}</p>
+			{{/each}}
+		</li>
+	</ul>
 </div>

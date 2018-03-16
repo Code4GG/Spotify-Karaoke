@@ -14,7 +14,7 @@ router.get('api/users', function(req,res){
 		res.json(results);
 	});
 });
-//used when users enter theyre data
+//used when users enter their data
 router.post('/api/users', function(req,res){
 	users.create({
 		name: req.body.name,
