@@ -15,6 +15,7 @@
     "node-spotify-api": "^1.0.7",
     "request": "^2.85.0",
     "sequelize": "^4.36.1",
+    "sequelize-cli": "^4.0.0",
     "spotify": "^0.3.0"
   },
   "devDependencies": {},
