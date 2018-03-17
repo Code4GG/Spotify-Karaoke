@@ -1,5 +1,5 @@
-$(function() {
-	$('.user-add').on("click", function(event) {
+// $(function() {
+// 	$('.user-add').on("click", function(event) {
 		
-	})
-})
+// 	})
+// })
