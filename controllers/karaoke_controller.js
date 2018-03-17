@@ -3,11 +3,22 @@ const router = express.Router();
 const users = require('../models/users.js');
 const admins = require("../models/admin.js");
 const searched_songs = require('../models/searched_songs.js');
+const exhbs = require('express-handlebars');
+const db = require('../models');
 
 //redirects to index on load
 router.get('/', function(req,res){
 	res.redirect('/users');
 });
+
+router.get('/users', function(req, res) {
+	console.log(users);
+	// db.users.findAll({}).then(function(userData) {
+		res.render("user")
+	// 	console.log(userData);
+	// })
+})
+
 //gets all users in the database
 router.get('api/users', function(req,res){
 	users.findAll({}).then(function(results){
