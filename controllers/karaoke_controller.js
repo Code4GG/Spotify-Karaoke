@@ -21,7 +21,7 @@ router.get('/users', function(req, res) {
 
 //gets all users in the database
 router.get('api/users', function(req,res){
-	users.findAll({}).then(function(results){
+	db.users.findAll({}).then(function(results){
 		res.json(results);
 	});
 });
