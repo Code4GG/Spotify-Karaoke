@@ -25,6 +25,9 @@ router.get('api/users', function(req,res){
 		res.json(results);
 	});
 });
+
+//display route
+
 //used when users enter their data
 router.post('/api/users', function(req,res){
 	users.create({
