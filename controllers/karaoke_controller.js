@@ -32,6 +32,7 @@ router.get('api/users', function(req,res){
 router.post('/api/users', function(req,res){
 	users.create({
 		name: req.body.name,
+		nickname: req.body.nickname,
 		email: req.body.email,
 		phone: req.body.phone,
 		admin: false
@@ -43,6 +44,7 @@ router.post('/api/users', function(req,res){
 router.post('/api/admins', function(req,res){
 	admins.create({
 		name: req.body.name,
+		nickname: req.body.nickname,
 		email: req.body.email,
 		pass: req.body.pass,
 		admin_access: true
