@@ -5,16 +5,37 @@ body {
 
 .display-4 {
 	font-weight: bold;
+	font-family: Poppins;
 	text-align: center;
 	color: white;
 }
 
 .lead {
 	text-align: center;
-	font-size: 24px;
+	font-family: Poppins;
+	font-size: 36px;
 	color: white;
 }
 
+#user-button-div {
+	padding-top: 40px;
+}
+
+#user-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 #user-add {
-	vertical-align: center;
+	box-shadow: 2px 3px #145A32;
+}
+
+#submit {
+	background-color: #28a745;
+	border-color: #28a745;
+}
+
+.modal-content {
+	font-family: Poppins;
 }
