@@ -1,14 +1,12 @@
 <div class="container">
-	<a href="/add"></a><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#userModal" id="user-add">Sign up</button>
-	
-	<a href="/search"></a><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#searchModal" id="song-search">Song Search</button>
+	<a href="/add"></a><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#userModal" id="user-add">Sign up here!</button>
 </div>
 
 <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="modalLongTitle" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="modalTitle">Search for a song</h5>
+				<h5 class="modal-title" id="modalTitle">Enter your information</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -31,6 +29,10 @@
 						<label for="phone">Phone Number</label>
 						<input type="phone" class="form-control" id="inputPhone" placeholder="Phone Number">
 					</div>
+					<div class="form-group">
+						<label for="song">Song Request</label>
+						<input type="song" class="form-control" id="inputSong" placeholder="Song Request">
+					</div>
 					<button type="submit" class="btn btn-primary sub-btn">Submit</button>
 				</form>
 			</div>
@@ -38,29 +40,7 @@
 	</div>
 </div>
 
-<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="modalLongTitle" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="modalTitle">Search for a song</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-      		</div>
-			<div class="modal-body">
-					<div class="form-group">
-						<input type="searched_song" class="form-control" id="inputSearch" placeholder="Search for a song">
-					</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Search</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="song-queue">
+{{!-- <div class="song-queue">
 	<ul>
 		<li>
 			{{#each songs}}
@@ -68,7 +48,7 @@
 			{{/each}}
 		</li>
 	</ul>
-</div>
+</div> --}}
 <script type="text/javascript">
 var name, nickname, email, phone, newUser;
 	$('.sub-btn').on('click', function(event){
