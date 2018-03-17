@@ -1,0 +1,20 @@
+body {
+	background-image: url(../images/backgroundCrowd.jpg);
+	background-size: cover;
+}
+
+.display-4 {
+	font-weight: bold;
+	text-align: center;
+	color: white;
+}
+
+.lead {
+	text-align: center;
+	font-size: 24px;
+	color: white;
+}
+
+#user-add {
+	vertical-align: center;
+}
