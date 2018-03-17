@@ -33,7 +33,6 @@ router.post('/api/users', function(req,res){
 	users.create({
 		nickname: req.body.nickname,
 		name: req.body.name,
-		nickname: req.body.nickname,
 		email: req.body.email,
 		phone: req.body.phone,
 		admin: false
