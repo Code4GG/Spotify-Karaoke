@@ -31,7 +31,7 @@
 						<label for="phone">Phone Number</label>
 						<input type="phone" class="form-control" id="inputPhone" placeholder="Phone Number">
 					</div>
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="submit" class="btn btn-primary sub-btn">Submit</button>
 				</form>
 			</div>
 		</div>
@@ -70,10 +70,22 @@
 	</ul>
 </div>
 <script type="text/javascript">
+var name, nickname, email, phone, newUser;
 	$('.sub-btn').on('click', function(event){
 		event.preventDefault();
-
-		
-
-	})
+			console.log($('#inputName').val());
+			console.log($('#inputnickname').val());
+			console.log($('#inputEmail').val());
+			console.log($('#inputPhone').val());
+				nameVal= $('#inputName').val();
+				nicknameVal= $('#inputnickname').val();
+				emailVal= $('#inputEmail').val();
+				phoneVal= $('#inputPhone').val();
+				newUser= {
+					name: nameVal,
+					nickname: nicknameVal,
+					email: emailVal,
+					phone: phoneVal,
+			}
+})
 </script>
