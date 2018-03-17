@@ -1,5 +1,7 @@
-<div class="container">
-	<a href="/add"></a><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#userModal" id="user-add">Sign up here!</button>
+<div class="container" id="user-button-div">
+	<div class="container" id="user-button">
+		<a href="/add"></a><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#userModal" id="user-add">Sign up here!</button>
+	</div>
 </div>
 
 <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="modalLongTitle" aria-hidden="true">
@@ -15,25 +17,25 @@
 				<form>
 					<div class="form-group">
 						<label for="name">Full Name</label>
-						<input type="name" class="form-control" id="inputName" placeholder="Enter name">
+						<input type="name" class="form-control" id="inputName">
 					</div>
 					<div class="form-group">
 						<label for="name">Nickname</label>
-						<input type="name" class="form-control" id="inputnickname" placeholder="Enter nickname for display on the queue">
+						<input type="name" class="form-control" id="inputNickname">
 					</div>						
 					<div class="form-group">
 						<label for="email">Email address</label>
-						<input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+						<input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
 					</div>
 					<div class="form-group">
 						<label for="phone">Phone Number</label>
-						<input type="phone" class="form-control" id="inputPhone" placeholder="Phone Number">
+						<input type="phone" class="form-control" id="inputPhone">
 					</div>
 					<div class="form-group">
 						<label for="song">Song Request</label>
-						<input type="song" class="form-control" id="inputSong" placeholder="Song Request">
+						<input type="song" class="form-control" id="inputSong">
 					</div>
-					<button type="submit" class="btn btn-primary sub-btn">Submit</button>
+					<button type="submit" class="btn btn-primary sub-btn" id="submit">Submit</button>
 				</form>
 			</div>
 		</div>
