@@ -30,6 +30,9 @@ router.get('api/users', function(req,res){
 
 //used when users enter their data
 router.post('/api/users', function(req,res){
+
+	const users = req.body;
+	console.log(users);
 	users.create({
 		name: req.body.name,
 		nickname: req.body.nickname,
