@@ -39,3 +39,13 @@ body {
 .modal-content {
 	font-family: Poppins;
 }
+
+#queue {
+	width: 400px;
+	padding-top: 50px;
+}
+
+.list-group{
+	font-family: Poppins;
+
+}
