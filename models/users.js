@@ -1,3 +1,5 @@
+const sequelize = require("../config/connection.js");
+
 module.exports = function(sequelize, datatypes){
   const users = sequelize.define('users', {
   	nickname: datatypes.STRING,
