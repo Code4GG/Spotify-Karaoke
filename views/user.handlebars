@@ -14,7 +14,7 @@
 				</button>
       		</div>
 			<div class="modal-body">
-				<form action="api/users" method="POST" role="form">
+				<form action="/api/users" method="POST" role="form">
 					<div class="form-group">
 						<label for="name">Full Name</label>
 						<input type="name" class="form-control" id="inputName">
@@ -57,26 +57,34 @@
 </div>
 
 <script type="text/javascript">
-var name, nickname, email, phone, newUser, songRequest;
 	$('.sub-btn').on('click', function(event){
 		event.preventDefault();
-			console.log($('#inputName').val());
-			console.log($('#inputNickname').val());
-			console.log($('#inputEmail').val());
-			console.log($('#inputPhone').val());
-			console.log($('#inputSong').val());
-				nameVal= $('#inputName').val();
-				nicknameVal= $('#inputNickname').val();
-				emailVal= $('#inputEmail').val();
-				phoneVal= $('#inputPhone').val();
-				songVal= $('#inputSong').val();
-				newUser= {
-					name: nameVal,
-					nickname: nicknameVal,
-					email: emailVal,
-					phone: phoneVal,
-			}
-		$('.list-group').append('<button type="button" class="list-group-item" id="singer-queue" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" title data-content="Song: ' + songVal + '" data-original-title="' + nameVal +  '">' + nicknameVal + '</button>')
+			// console.log($('#inputName').val());
+			// console.log($('#inputNickname').val());
+			// console.log($('#inputEmail').val());
+			// console.log($('#inputPhone').val());
+
+				const newUser= {
+					name: $('#inputName').val().trim(),
+					nickname: $('#inputNickname').val().trim(),
+					email: $('#inputEmail').val().trim(),
+					phone: $('#inputPhone').val().trim(),
+					song_request: $('#inputSong').val().trim()
+				}
+				console.log(newUser);
+				$.post("/api/users", newUser).then(function(data){
+					alert('Adding User');
+					console.log(data);
+				})
+
+				 $('#inputName').val("")
+				 $('#inputNickname').val("")
+				 $('#inputEmail').val("")
+				 $('#inputPhone').val("")
+				 $('#inputSong').val("")
+
+
+		$('.list-group').append('<button type="button" class="list-group-item" id="singer-queue" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" title data-content="Song: ' + song_request + '" data-original-title="' + name +  '">' + nickname + '</button>')
 	
 		$('[data-toggle="popover"').popover({
 			trigger: 'focus'
@@ -84,5 +92,4 @@ var name, nickname, email, phone, newUser, songRequest;
 
 		$('#userModal').modal('hide');
 	})
-
 </script>
