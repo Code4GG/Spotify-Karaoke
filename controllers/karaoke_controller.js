@@ -21,8 +21,9 @@ router.get('/users', function(req, res) {
 
 //gets all users in the database
 router.get('api/users', function(req,res){
+
 	db.users.findAll({}).then(function(results){
-		res.json(results);
+		return res.json(results);
 	});
 });
 
@@ -33,13 +34,13 @@ router.post('/api/users', function(req,res){
 
 	const users = req.body;
 	console.log(users);
-	users.create({
+	db.users.create({
 		name: req.body.name,
 		nickname: req.body.nickname,
 		email: req.body.email,
 		phone: req.body.phone,
 		song_request: req.body.song_request,
-		admin: false
+		admin_access: false
 	}).then(function(results){
 		res.end();
 	});
