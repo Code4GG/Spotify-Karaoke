@@ -41,11 +41,16 @@ body {
 }
 
 #queue {
-	width: 400px;
+	width: 600px;
 	padding-top: 50px;
 }
 
-.list-group{
+.list-group-item {
 	font-family: Poppins;
-
+	color: white;
+	padding: 10px;
+	margin: 5px;
+	border-width: 2px;
+	border-color: white;
+	background-color: #000B00;
 }
