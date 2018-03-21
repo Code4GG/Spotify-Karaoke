@@ -17,10 +17,10 @@ router.get('/', function(req,res){
 	})
 });
 
-// router.get('/admins', function(req,res){
-// 	res.render("admin")
-// 	console.log('admin page')
-// })
+router.get('/admins', function(req,res){
+	res.render("admin")
+	console.log('admin page')
+})
 
 //gets all users in the database
 router.get('/api/users', function(req,res){

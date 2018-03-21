@@ -1,0 +1,95 @@
+{{!-- log in button --}}
+<div class="container" id="user-button-div">
+	<div class="container" id="user-button">
+		<a href="/add"></a><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#loginModal" id="user-add">Log in here!</button>
+	</div>
+</div>
+{{!-- sign up button --}}
+<div class="container" id="user-button-div">
+	<div class="container" id="user-button">
+		<a href="/add"></a><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#signupModal" id="user-add">Sign in here!</button>
+	</div>
+</div>
+{{!-- login modal --}}
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="modalLongTitle" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalTitle">Enter your information</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+      		</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label for="email">Email address</label>
+						<input type="email" class="form-control" id="inputEmailLogin" aria-describedby="emailHelp">
+					</div>
+					<div class="form-group">
+						<label for="phone">Password</label>
+						<input type="phone" class="form-control" id="inputPassLogin">
+					</div>
+					<button type="submit" class="btn btn-primary sub-btn-login" id="submit">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{!-- sign up modal --}}
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="modalLongTitle" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalTitle">Enter your information</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+      		</div>
+			<div class="modal-body">
+				<form action="/api/admins" method="POST" role="form">
+					<div class="form-group">
+						<label for="name">Name</label>
+						<input type="name" class="form-control" id="inputNameSignup">
+					</div>
+					<div class="form-group">
+						<label for="email">Email address</label>
+						<input type="email" class="form-control" id="inputEmailSignup" aria-describedby="emailHelp">
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label>
+						<input type="password" class="form-control" id="inputPassSignup">
+					</div>
+					<button type="submit" class="btn btn-primary sub-btn-signup" id="submit">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$('.sub-btn-signup').on('click', function(event){
+		event.preventDefault();
+
+				const newAdmin = {
+					name: $('#inputNameSignup').val().trim(),
+					email: $('#inputEmailSignup').val().trim(),
+					pass: $('#inputPassSignup').val().trim()
+				}
+				console.log(newAdmin);
+				$.post("/api/admins", newAdmin).then(function(data){
+					alert('Adding User');
+					console.log(data);
+				})
+		$('#signupModal').modal('hide');
+
+	})
+
+	$('.sub-btn-login').on('click', function(event){
+		event.preventDefault();
+
+		$('#loginModal').modal('hide');
+
+	})
+</script>
