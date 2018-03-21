@@ -62,10 +62,9 @@
 <script type="text/javascript">
 	$('.sub-btn').on('click', function(event){
 		event.preventDefault();
-			// console.log($('#inputName').val());
-			// console.log($('#inputNickname').val());
-			// console.log($('#inputEmail').val());
-			// console.log($('#inputPhone').val());
+			const name = $('#inputName').val();
+			const nickname = $('#inputNickname').val();
+			const song_request = $('#inputSong').val();
 
 				const newUser= {
 					name: $('#inputName').val().trim(),
@@ -89,10 +88,14 @@
 
 		$('.list-group').append('<button type="button" class="list-group-item" id="singer-queue" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" title data-content="Song: ' + song_request + '" data-original-title="' + name +  '">' + nickname + '</button>')
 	
-		$('[data-toggle="popover"').popover({
-			trigger: 'focus'
-		});
+		// $('[data-toggle="popover"').popover({
+		// 	trigger: 'focus'
+		// });
 
 		$('#userModal').modal('hide');
 	})
+
+	$('"data-toggle="popover"').popover({
+			trigger: 'focus'
+		});
 </script>
