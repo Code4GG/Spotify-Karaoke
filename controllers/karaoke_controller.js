@@ -17,6 +17,11 @@ router.get('/', function(req,res){
 	})
 });
 
+// router.get('/admins', function(req,res){
+// 	res.render("admin")
+// 	console.log('admin page')
+// })
+
 //gets all users in the database
 router.get('/api/users', function(req,res){
 	// res.json(req.body);
@@ -40,8 +45,8 @@ router.post('/api/users', function(req,res){
 		song_request: req.body.song_request,
 		admin_access: false
 	}).then(function(results){
-
-		res.end();
+		res.render('user');
+		// res.end();
 	});
 });
 //used when admins create an account
