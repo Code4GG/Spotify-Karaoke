@@ -1,3 +1,25 @@
-
-<button type="button" class="list-group-item" id="singer-queue" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" title="{{this.name}}" data-content="Song: '{{this.searched_songs}}'">{{this.nickname}}</button>
-
+<div class="list-group-item flex-column align-items-start">
+	<div class="row">
+		<div class="col-md-4">
+			<h5 class='nickname' id='user-header'>Nickname:</h5>
+				<p>{{this.nickname}}</p>
+			<h5 class='song_request' id='user-header'>Singing:</h5>
+				<p>{{this.searched_song}}</p>
+			<h5 class='artist' id='user-header'>In Vein Of:</h5>
+				<p><!--Artist--></p>
+			</div>
+		<div class="col-md-4">
+			<ul id="song-stats">
+				<li><!--Artist/Song--></li>
+				<li>Label: <!--Label info--></li>
+				<li>Format: <!--Format--></li>
+				<li>Country: <!--Country--></li>
+				<li>Released: <!--Released date--></li>
+				<li>Genre: <!--Genre--></li>
+			</ul>
+		</div>
+		<div class="col-md-4">
+			<img src='#' alt='album cover' height='40' width='40'>
+		</div>
+	</div>	
+</div>

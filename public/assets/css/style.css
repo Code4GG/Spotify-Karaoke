@@ -41,7 +41,7 @@ body {
 }
 
 #queue {
-	width: 600px;
+	width: 80%;
 	padding-top: 50px;
 }
 
@@ -53,4 +53,14 @@ body {
 	border-width: 2px;
 	border-color: white;
 	background-color: #000B00;
+}
+
+#user-header {
+	font-weight: bold;
+}
+
+#song-stats {
+	padding: 5px;
+	margin: 5px;
+	list-style-type: none;
 }
