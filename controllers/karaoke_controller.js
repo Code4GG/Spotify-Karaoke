@@ -20,9 +20,9 @@ router.get('/users', function(req, res) {
 })
 
 //gets all users in the database
-router.get('api/users', function(req,res){
-
-	users.findAll({}).then(function(results){
+router.get('/api/users', function(req,res){
+	// res.json(req.body);
+	db.users.findAll({}).then(function(results){
 		return res.json(results);
 	});
 });
