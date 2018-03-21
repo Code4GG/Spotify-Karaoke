@@ -22,7 +22,7 @@ router.get('/users', function(req, res) {
 //gets all users in the database
 router.get('api/users', function(req,res){
 
-	db.users.findAll({}).then(function(results){
+	users.findAll({}).then(function(results){
 		return res.json(results);
 	});
 });
@@ -42,12 +42,15 @@ router.post('/api/users', function(req,res){
 		song_request: req.body.song_request,
 		admin_access: false
 	}).then(function(results){
+
 		res.end();
 	});
 });
 //used when admins create an account
 router.post('/api/admins', function(req,res){
-	admins.create({
+	
+	const admins = req.body;
+	db.admins.create({
 		name: req.body.name,
 		email: req.body.email,
 		pass: req.body.pass,
@@ -58,7 +61,8 @@ router.post('/api/admins', function(req,res){
 });
 //used for when songs are searched
 router.post('/api/searched_songs', function(res,res){
-	searched_songs.create({
+	const searched_songs = req.body
+	db.searched_songs.create({
 		song: req.body.song,
 		song_played: false
 	});
