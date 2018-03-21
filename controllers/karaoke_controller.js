@@ -8,16 +8,14 @@ const db = require('../models');
 
 //redirects to index on load
 router.get('/', function(req,res){
-	res.redirect('/users');
+	db.users.findAll({}).then(function(userData) {
+		const userObject = {
+			Users: userData
+		}
+		res.render("user", userObject)
+		console.log(userData);
+	})
 });
-
-router.get('/users', function(req, res) {
-	console.log(users);
-	// db.users.findAll({}).then(function(userData) {
-		res.render("user")
-	// 	console.log(userData);
-	// })
-})
 
 //gets all users in the database
 router.get('/api/users', function(req,res){

@@ -53,6 +53,9 @@
 		</button>
 		<button type="button" class="list-group-item" id="singer-queue" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" title="Vincent Cavallaro" data-content="Song: 'The Name Game'">Vin</button>
 		<button type="button" class="list-group-item" id="singer-queue" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" title="Vraj Dalal" data-content="Song: 'Chicken Fried'">Vraj</button>
+		{{#each Users}}
+		{{> list}}
+		{{/each}}
 	</div>
 </div>
 
