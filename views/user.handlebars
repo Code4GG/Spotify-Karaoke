@@ -43,30 +43,46 @@
 </div>
 <div class="container" id="queue">
 	<div class="list-group">
-		<button type="button" class="list-group-item list-group-item-action">Matt Scuteri</button>
-		<button type="button" class="list-group-item-action">Ralph Esposito</button>
-		<button type="button" class="list-group-item-action">Vin Cavallario</button>
-		<button type="button" class="list-group-item-action">Vraj Dalal</button>
+		<button type="button" class="list-group-item list-group-item" id="singer-queue"data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" title="Matt Scuteri" data-content="Song: 'More Than a Feeling">
+			<h4 style="font-weight: bold;">Up now:</h4>
+			<h5>Matt</h5>
+		</button>
+		<button type="button" class="list-group-item" id="singer-queue"data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" title="Ralph Esposito" data-content="Song: 'I've Got A Lovely Bunch of Coconuts'">
+			<h5 style="font-weight: bold;">Up next:</h5>
+			<h6>Ralph</h6>
+		</button>
+		<button type="button" class="list-group-item" id="singer-queue" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" title="Vincent Cavallaro" data-content="Song: 'The Name Game'">Vin</button>
+		<button type="button" class="list-group-item" id="singer-queue" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" title="Vraj Dalal" data-content="Song: 'Chicken Fried'">Vraj</button>
 	</div>
 </div>
 
 <script type="text/javascript">
-var name, nickname, email, phone, newUser;
+var name, nickname, email, phone, newUser, songRequest;
 	$('.sub-btn').on('click', function(event){
 		event.preventDefault();
 			console.log($('#inputName').val());
-			console.log($('#inputnickname').val());
+			console.log($('#inputNickname').val());
 			console.log($('#inputEmail').val());
 			console.log($('#inputPhone').val());
+			console.log($('#inputSong').val());
 				nameVal= $('#inputName').val();
-				nicknameVal= $('#inputnickname').val();
+				nicknameVal= $('#inputNickname').val();
 				emailVal= $('#inputEmail').val();
 				phoneVal= $('#inputPhone').val();
+				songVal= $('#inputSong').val();
 				newUser= {
 					name: nameVal,
 					nickname: nicknameVal,
 					email: emailVal,
 					phone: phoneVal,
 			}
-})
+		$('.list-group').append('<button type="button" class="list-group-item" id="singer-queue" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" title data-content="Song: ' + songVal + '" data-original-title="' + nameVal +  '">' + nicknameVal + '</button>')
+	
+		$('[data-toggle="popover"').popover({
+			trigger: 'focus'
+		});
+
+		$('#userModal').modal('hide');
+	})
+
 </script>
