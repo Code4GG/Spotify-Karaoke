@@ -25,12 +25,14 @@
 					<div class="form-group">
 						<label for="email">Email address</label>
 						<input type="email" class="form-control" id="inputEmailLogin" aria-describedby="emailHelp">
+						<small class="errorEmail">Please Enter The Correct Email *</small>
 					</div>
 					<div class="form-group">
-						<label for="phone">Password</label>
-						<input type="phone" class="form-control" id="inputPassLogin">
+						<label for="pass">Password</label>
+						<input type="pass" class="form-control" id="inputPassLogin">
+						<small class="errorPass">Please Enter The Correct Password *</small>
 					</div>
-					<button type="submit" class="btn btn-primary sub-btn-login" id="submit">Submit</button>
+					<button type="button" class="btn btn-primary sub-btn-login" id="submit">Submit</button>
 				</form>
 			</div>
 		</div>
@@ -52,16 +54,19 @@
 					<div class="form-group">
 						<label for="name">Name</label>
 						<input type="name" class="form-control" id="inputNameSignup">
+						<small class="errorName">Please Enter Your Name *</small>
 					</div>
 					<div class="form-group">
 						<label for="email">Email address</label>
 						<input type="email" class="form-control" id="inputEmailSignup" aria-describedby="emailHelp">
+						<small class="errorEmail">Please Enter Your Email *</small>
 					</div>
 					<div class="form-group">
 						<label for="password">Password</label>
 						<input type="password" class="form-control" id="inputPassSignup">
+						<small class="errorPass">Please Enter Your Password *</small>
 					</div>
-					<button type="submit" class="btn btn-primary sub-btn-signup" id="submit">Submit</button>
+					<button type="button" class="btn btn-primary sub-btn-signup" id="sub">Submit</button>
 				</form>
 			</div>
 		</div>
@@ -69,27 +74,80 @@
 </div>
 
 <script type="text/javascript">
+	
 	$('.sub-btn-signup').on('click', function(event){
 		event.preventDefault();
+
+		const name = $('#inputNameSignup').val();
+		const email = $('#inputEmailSignup').val();
+		const pass = $('#inputPassSignup').val();
+
+			function validation(){
+				return (name !== '' && email !== '' && pass !=='');
+			}
 
 				const newAdmin = {
 					name: $('#inputNameSignup').val().trim(),
 					email: $('#inputEmailSignup').val().trim(),
 					pass: $('#inputPassSignup').val().trim()
 				}
+
+				if (validation()){
+
 				console.log(newAdmin);
 				$.post("/api/admins", newAdmin).then(function(data){
 					alert('Adding User');
 					console.log(data);
+					$('#signupModal').modal('hide');
 				})
-		$('#signupModal').modal('hide');
+
+				$('.errorName').hide();
+				$('.errorEmail').hide();
+				$('.errorPass').hide();
+
+			    } else {
+
+				if ($('#inputNameSignup').val() === ""){
+					$('.errorName').show();
+				}
+				if ($('#inputEmailSignup').val() === "") {
+					$('.errorEmail').show();
+				}
+				if ($('#inputPassSignup').val() === ""){
+					$('.errorPass').show();
+				}
+			}
 
 	})
 
 	$('.sub-btn-login').on('click', function(event){
 		event.preventDefault();
 
-		$('#loginModal').modal('hide');
+		const email = $('#inputEmailLogin').val();
+		const pass = $('#inputPassLogin').val();
+
+
+		function validation(){
+				return (email !== '' && pass !== '');
+			}
+
+			console.log(validation());
+
+		if(validation()){
+			$('#loginModal').modal('hide');
+			
+			$('.errorName').hide();
+			$('.errorEmail').hide();
+			$('.errorPass').hide();
+
+		} else {
+			if ($('#inputEmailLogin').val() === "") {
+				$('.errorEmail').show();
+			}
+			if ($('#inputPassLogin').val() === ""){
+				$('.errorPass').show();
+			}
+		}
 
 	})
 </script>

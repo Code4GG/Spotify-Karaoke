@@ -64,7 +64,7 @@ body {
 	margin: 5px;
 	list-style-type: none;
 }
-#errorName, #errorNickname, #errorEmail, #errorPhone, #errorSong{
+.errorName, .errorNickname, .errorEmail, .errorPhone, .errorSong, .errorPass{
 	color:red;
 	display: none;
 }
