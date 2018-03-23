@@ -63,6 +63,33 @@ body {
 	padding: 5px;
 	margin: 5px;
 	list-style-type: none;
+	font-size: 20px;
+}
+
+#album {
+	font-weight: bold;
+	padding-bottom: 20px;
+}
+
+#country {
+	font-weight: bold;
+	padding-bottom: 20px;
+}
+
+#genre {
+	font-weight: bold;
+}
+
+#album-cover {
+	float: right;
+	padding-right: 100px;
+	border-color: white;
+	border-width: 5px;
+}
+
+img {
+	height: 100%;
+	width: 100%;
 }
 .errorName, .errorNickname, .errorEmail, .errorPhone, .errorSong, .errorPass{
 	color:red;
