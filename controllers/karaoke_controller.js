@@ -17,10 +17,17 @@ router.get('/', function(req,res){
 	})
 });
 
-router.get('/admins', function(req,res){
-	res.render("admin")
-	console.log('admin page')
-})
+//redirects to admin page
+router.get('/api/admins/', function(req, res) {
+    db.users.findAll({})
+    .then(function(adminData) {
+        const adminObject = {
+            Admins: adminData
+        }
+        res.render("admin", adminObject)
+        console.log('admin page')
+    })
+});
 
 //gets all users in the database
 router.get('/api/users', function(req,res){
@@ -70,6 +77,17 @@ router.post('/api/searched_songs', function(res,res){
 		song_played: false
 	});
 });
+//
+router.delete('/api/admins/:id', function(req, res) {
+
+            db.users.destroy({
+                where: {
+                    id: req.params.id
+                }
+            }).then(function(post){
+                res.json(post)
+            })
+            })
 
 
 module.exports = router;
