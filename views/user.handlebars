@@ -18,24 +18,29 @@
 					<div class="form-group">
 						<label for="name">Full Name</label>
 						<input type="name" class="form-control" id="inputName">
+						<small id="errorName">Please Enter Your Name *</small>
 					</div>
 					<div class="form-group">
 						<label for="name">Nickname</label>
-						<input type="name" class="form-control" id="inputNickname">
+						<input type="nickname" class="form-control" id="inputNickname">
+						<small id="errorNickname">Please Enter Your NickName *</small>
 					</div>						
 					<div class="form-group">
 						<label for="email">Email address</label>
 						<input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+						<small id="errorEmail">Please Enter Your Email *</small>
 					</div>
 					<div class="form-group">
 						<label for="phone">Phone Number</label>
 						<input type="phone" class="form-control" id="inputPhone">
+						<small id="errorPhone">Please Enter Your Phone *</small>
 					</div>
 					<div class="form-group">
 						<label for="song">Song Request</label>
 						<input type="song" class="form-control" id="inputSong">
+						<small id="errorSong">Please Enter Your Song *</small>
 					</div>
-					<button type="submit" class="btn btn-primary sub-btn" id="submit">Submit</button>
+					<button type="button" class="btn btn-primary sub-btn" id="submit">Submit</button>
 				</form>
 			</div>
 		</div>
@@ -52,40 +57,60 @@
 <script type="text/javascript">
 	$('.sub-btn').on('click', function(event){
 		event.preventDefault();
+
 			const name = $('#inputName').val();
 			const nickname = $('#inputNickname').val();
+			const email = $('#inputEmail').val();
+			const phone = $('#inputPhone').val();
 			const song_request = $('#inputSong').val();
 
-				const newUser= {
+			const newUser= {
 					name: $('#inputName').val().trim(),
 					nickname: $('#inputNickname').val().trim(),
 					email: $('#inputEmail').val().trim(),
 					phone: $('#inputPhone').val().trim(),
 					song_request: $('#inputSong').val().trim()
 				}
+
+
+			function validation(){
+				return (name !== '' && nickname !== '' && email !== '' && phone !== '' && song_request !== '');
+			}
+
+			if (validation()){
 				console.log(newUser);
 				$.post("/api/users", newUser).then(function(data){
 					alert('Adding User');
 					console.log(data);
 				})
 
-				 $('#inputName').val("")
-				 $('#inputNickname').val("")
-				 $('#inputEmail').val("")
-				 $('#inputPhone').val("")
-				 $('#inputSong').val("")
+			$('.list-group').append('<button type="button" class="list-group-item" id="singer-queue" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" title data-content="Song: ' + song_request + '" data-original-title="' + name +  '">' + nickname + '</button>')
 
 
-		$('.list-group').append('<button type="button" class="list-group-item" id="singer-queue" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" title data-content="Song: ' + song_request + '" data-original-title="' + name +  '">' + nickname + '</button>')
-	
-		// $('[data-toggle="popover"').popover({
-		// 	trigger: 'focus'
-		// });
+				$('#userModal').modal('hide');
 
-		$('#userModal').modal('hide');
+			} else {
+
+				if ($('#inputNickname').val() === ""){
+					$('#errorNickname').show();
+				}
+				if ($('#inputEmail').val() === "") {
+					$('#errorEmail').show();
+				}
+				if ($('#inputPhone').val() === ""){
+					$('#errorPhone').show();
+				}
+				if ($('#inputSong').val() === ""){
+					$('#errorSong').show();
+				}
+			}
+
+			     $('#inputName').val("");
+				 $('#inputNickname').val("");
+				 $('#inputEmail').val("");
+				 $('#inputPhone').val("");
+				 $('#inputSong').val("");
+
 	})
 
-	$('"data-toggle="popover"').popover({
-			trigger: 'focus'
-		});
 </script>

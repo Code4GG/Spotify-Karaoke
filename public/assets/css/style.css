@@ -64,3 +64,7 @@ body {
 	margin: 5px;
 	list-style-type: none;
 }
+#errorName, #errorNickname, #errorEmail, #errorPhone, #errorSong{
+	color:red;
+	display: none;
+}
