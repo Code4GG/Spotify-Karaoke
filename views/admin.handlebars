@@ -29,7 +29,7 @@
 					</div>
 					<div class="form-group">
 						<label for="pass">Password</label>
-						<input type="pass" class="form-control" id="inputPassLogin">
+						<input type="password" class="form-control" id="inputPassLogin">
 						<small class="errorPass">Please Enter The Correct Password *</small>
 					</div>
 					<button type="button" class="btn btn-primary sub-btn-login" id="submit">Submit</button>
@@ -62,7 +62,7 @@
 						<small class="errorEmail">Please Enter Your Email *</small>
 					</div>
 					<div class="form-group">
-						<label for="password">Password</label>
+						<label for="pass">Password</label>
 						<input type="password" class="form-control" id="inputPassSignup">
 						<small class="errorPass">Please Enter Your Password *</small>
 					</div>
@@ -130,6 +130,11 @@
 		function validation(){
 				return (email !== '' && pass !== '');
 			}
+
+		$.get("/admin_access").then(function(data){
+				console.log(data);
+				// res.render('admin_access');
+		})
 
 			console.log(validation());
 

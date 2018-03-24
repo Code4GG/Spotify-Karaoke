@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const singers = require('../models/singers.js');
 const users = require('../models/users.js');
 const admins = require("../models/admin.js");
 const searched_songs = require('../models/searched_songs.js');
@@ -18,7 +19,7 @@ router.get('/', function(req,res){
 });
 
 router.get('/admins', function(req,res){
-	res.render("admin")
+	res.render("admin");
 	console.log('admin page')
 })
 
@@ -31,6 +32,37 @@ router.get('/api/users', function(req,res){
 });
 
 //display route
+router.get('/admin_access', function(req,res){
+	db.singers.findAll({}).then(function(userData) {
+		const singerObject = {
+			Singers: userData
+		}
+		res.render("admin_access", singerObject)
+		console.log(userData);
+	})
+})
+
+router.post('/api/singers', function(req,res){
+	const users = req.body;
+	console.log(users);
+	db.singers.create({
+		name: req.body.name,
+		nickname: req.body.nickname,
+		email: req.body.email,
+		phone: req.body.phone,
+		song_request: req.body.song_request,
+		admin_access: false
+	}).then(function(results){
+		res.render('user');
+		// res.end();
+	});
+})
+
+router.get('/api/singers', function(req,res){
+	db.singers.findAll({}).then(function(results){
+		return res.json(results);
+	});
+})
 
 //used when users enter their data
 router.post('/api/users', function(req,res){

@@ -1,3 +1,4 @@
+<p class="lead">Sign up to sing your favorite tunes!</p>
 <div class="container" id="user-button-div">
 	<div class="container" id="user-button">
 		<a href="/add"></a><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#userModal" id="user-add">Sign up here!</button>
@@ -80,6 +81,9 @@
 
 			if (validation()){
 				console.log(newUser);
+				$.post('/api/singers', newUser).then(function(data){
+					console.log("singer added");
+				})
 				$.post("/api/users", newUser).then(function(data){
 					alert('Adding User');
 					console.log(data);
