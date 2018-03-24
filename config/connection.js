@@ -18,11 +18,11 @@ if (!global.hasOwnProperty('db')) {
   global.db = {
     Sequelize: Sequelize,
     sequelize: sequelize,
-    users:   sequelize.import(__dirname + '../models/users');
-    admins:   sequelize.import(__dirname + '../models/admins');
-    searched_songs:   sequelize.import(__dirname + '../models/searched_songs');
-    singers:   sequelize.import(__dirname + '../models/singers');
-    itunes:   sequelize.import(__dirname + '../models/itunes');
+    users:   sequelize.import(__dirname + '/models/users');
+    admins:   sequelize.import(__dirname + '/models/admins');
+    searched_songs:   sequelize.import(__dirname + '/models/searched_songs');
+    singers:   sequelize.import(__dirname + '/models/singers');
+    itunes:   sequelize.import(__dirname + '/models/itunes');
 
     // add your other models here
   }
