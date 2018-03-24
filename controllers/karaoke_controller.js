@@ -9,7 +9,7 @@ const db = require('../models');
 
 //redirects to index on load
 router.get('/', function(req,res){
-	db.users.findAll({}).then(function(userData) {
+	db.singers.findAll({}).then(function(userData) {
 		const userObject = {
 			Users: userData
 		}
@@ -103,5 +103,15 @@ router.post('/api/searched_songs', function(res,res){
 	});
 });
 
+router.delete('/api/singers/:id', function(req, res) {
+
+        	   db.singers.destroy({
+                where: {
+                    id: req.params.id
+                }
+            }).then(function(post){
+                res.json(post);
+    });
+ });
 
 module.exports = router;

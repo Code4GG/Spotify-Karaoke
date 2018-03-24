@@ -8,8 +8,22 @@
 
 <div class="container" id="queue">
 	<div class="list-group">
-		{{#each Singers}}
-		{{> list}}
-		{{/each}}
+			{{#each Singers}}
+			{{> list_delete}}
+			{{/each}}
 	</div>
 </div>
+
+<script type="text/javascript">
+	$(".deleteSong").on('click', function(event){
+		var id = $(this).data("id");
+		$.ajax({
+			method: "DELETE",
+		    url:"/api/singers/" + id, 
+		}).then(
+		function(){
+			console.log("deleted song", id);
+			location.reload();
+		});
+	})
+</script>

@@ -1,0 +1,23 @@
+<div class="list-group-item flex-column align-items-start">
+	<div class="row">
+		<div class="col-md-4">
+			<h5 class='nickname' id='user-header'>Nickname:</h5>
+				<p>{{this.nickname}}</p>
+			<h5 class='song_request' id='user-header'>Singing:</h5>
+				<p>{{this.song_request}}</p>
+			<h5 class='artist' id='user-header'>In Vein Of:</h5>
+				<p><!--Artist--></p>
+			</div>
+		<div class="col-md-4">
+			<ul id="song-stats">
+				<li id="album">Album: </li>
+				<li id="country">Country: </li>
+				<li id="genre">Genre: </li>
+			</ul>
+		</div>
+		<div class="col-md-4">
+			<img src='#' id='album-cover'>
+		</div>
+	</div>
+	<button class="deleteSong" data-id="{{this.id}}">Delete</button>	
+</div>
