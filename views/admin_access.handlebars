@@ -2,11 +2,14 @@
 
 <div class="container" id="user-button-div">
 	<div class="container" id="user-button">
-		<a href="/add"></a><button type="button" class="btn btn-success btn-lg" id="user-add">User Data</button>
+		<a href="#"></a><button type="button" class="btn btn-success btn-lg userData" id="user-add">User Data</button>
+	</div>
+	<div class="container" id="user-button">
+		<a href="/#"></a><button type="button" class="btn btn-success btn-lg singerData" id="user-add">Singers</button>
 	</div>
 </div>
 
-<div class="container" id="queue">
+<div class="container singers" id="queue">
 	<div class="list-group">
 			{{#each Singers}}
 			{{> list_delete}}
@@ -14,7 +17,35 @@
 	</div>
 </div>
 
+<div class="container users" id="queue">
+
+</div>
+
 <script type="text/javascript">
+	$('.users').hide();
+
+	$('.userData').on('click',function(event){
+		$('.singers').hide();
+		$('.users').show();
+
+		$.ajax({
+			method: "GET",
+			url: "api/users",
+			dataType: 'json'
+		}).done(function(response){
+			console.log(response);
+			for (let i = 0; i < response.length; i++){			
+				 $('.users').append("<div class='list-group-item flex-column align-items-start list-group-user'><p>Name: " + response[i].name + "</p>" +
+				 	"<p>Nickname: " + response[i].nickname + "</p>" + "<p>Email: " + response[i].email + "</p>" + "<p>Phone: " + response[i].phone + "</p></div>")
+				}
+			})
+		})
+
+	$('.singerData').on('click', function(even){
+		$('.singers').show();
+		$('.users').hide();
+	})
+
 	$(".deleteSong").on('click', function(event){
 		var id = $(this).data("id");
 		$.ajax({

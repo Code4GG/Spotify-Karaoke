@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const singers = require('../models/singers.js');
+const itunes = require('../models/itunes.js')
 const users = require('../models/users.js');
 const admins = require("../models/admin.js");
 const searched_songs = require('../models/searched_songs.js');
@@ -10,10 +11,10 @@ const db = require('../models');
 //redirects to index on load
 router.get('/', function(req,res){
 	db.singers.findAll({}).then(function(userData) {
-		const userObject = {
-			Users: userData
+		const singerObject = {
+			Singers: userData
 		}
-		res.render("user", userObject)
+		res.render("user", singerObject)
 		console.log(userData);
 	})
 });
@@ -38,12 +39,11 @@ router.get('/admin_access', function(req,res){
 			Singers: userData
 		}
 		res.render("admin_access", singerObject)
-		console.log(userData);
 	})
 })
 
 router.post('/api/singers', function(req,res){
-	const users = req.body;
+	const singers = req.body;
 	console.log(users);
 	db.singers.create({
 		name: req.body.name,
@@ -81,6 +81,16 @@ router.post('/api/users', function(req,res){
 		// res.end();
 	});
 });
+
+router.post('/api/ituneData', function(req,res){
+	const itunes = req.body;
+	db.itunes.create({
+		album: req.body.album,
+		country: req.body.country,
+		genre: req.body.genre,
+		album_cover: req.body.album_cover
+	})
+})
 //used when admins create an account
 router.post('/api/admins', function(req,res){
 	

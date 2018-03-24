@@ -49,13 +49,15 @@
 </div>
 <div class="container" id="queue">
 	<div class="list-group">
-		{{#each Users}}
+		{{#each Singers}}
 		{{> list}}
 		{{/each}}
 	</div>
 </div>
 
 <script type="text/javascript">
+
+	let itunesData = [];
 
 	$('.sub-btn').on('click', function(event){
 		event.preventDefault();
@@ -85,7 +87,7 @@
 					console.log("singer added");
 				})
 				$.post("/api/users", newUser).then(function(data){
-					alert('Adding User');
+					// alert('Adding User');
 					console.log(data);
 				
 					const queryURL = 'https://itunes.apple.com/search?term=' + newUser.song_request + '&media=music&entity=song&limit=1'
@@ -97,13 +99,16 @@
 					}).done(function(response) {
 						console.log(response);
 
-						$('#artist').append(response.results[0].artistName);
-						$('#album').append(response.results[0].collectionName);
-						$('#country').append(response.results[0].country);
-						$('#genre').append(response.results[0].primaryGenreName);
-						$('#album-cover').attr('src', response.results[0].artworkUrl100);
-						$('#album-cover').attr('alt', "album cover");
+						
+							itunesData.push(response.results[0].collectionName);
+							itunesData.push(response.results[0].country);
+							itunesData.push(response.results[0].primaryGenreName);
+							itunesData.push(response.results[0].artworkUrl100);
+							console.log(itunesData);
 					})
+					// $.post("/api/ituneData", ituneData).then(function(itunedata){
+					// 		console.log(itunedata);
+					// })
 				})
 
 				 $('#inputName').val("");
@@ -111,12 +116,6 @@
 				 $('#inputEmail').val("");
 				 $('#inputPhone').val("");
 				 $('#inputSong').val("");
-
-				$('#inputName').hide();
-				$('#inputNickname').hide();
-				$('#inputEmail').hide();
-				$('#inputPhone').hide();
-				$('#inputSong').hide();
 
 				$('#userModal').modal('hide');
 
@@ -142,6 +141,15 @@
 					$('#inputSong').val("");
 				}
 			}
+			let itunesResponse = [];
+			// console.log(itunes);
+			for (let i = 0; i < itunesData; i++){
+				itunesResponse.push(itunesData[i]);
+				console.log(itunesResponse);
+			}
+			$.post("/api/ituneData", itunesResponse[0]).then(function(itunedata){
+							console.log(itunedata);
+					})
 	})
 
 </script>
