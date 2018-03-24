@@ -4,6 +4,7 @@
   "description": "",
   "main": "keys.js",
   "dependencies": {
+    "animate.css": "^3.6.1",
     "body-parser": "^1.18.2",
     "bounce.js": "^0.8.2",
     "dotenv": "^5.0.1",
