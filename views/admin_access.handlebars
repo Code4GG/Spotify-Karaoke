@@ -2,7 +2,7 @@
 
 <div class="container" id="user-button-div">
 	<div class="container" id="user-button">
-		<a href="#"></a><button type="button" class="btn btn-success btn-lg userData" id="user-add">User Data</button>
+		<a href="#"></a><button type="button" class="btn btn-success btn-lg userData" id="user-add" style="margin-bottom: 20px;">User Data</button>
 	</div>
 	<div class="container" id="user-button">
 		<a href="/#"></a><button type="button" class="btn btn-success btn-lg singerData" id="user-add">Singers</button>
@@ -44,6 +44,7 @@
 	$('.singerData').on('click', function(even){
 		$('.singers').show();
 		$('.users').hide();
+		location.reload('admin_access');
 	})
 
 	$(".deleteSong").on('click', function(event){

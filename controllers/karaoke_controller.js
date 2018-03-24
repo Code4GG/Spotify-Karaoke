@@ -53,7 +53,7 @@ router.post('/api/singers', function(req,res){
 		song_request: req.body.song_request,
 		admin_access: false
 	}).then(function(results){
-		res.render('user');
+		// res.render('user');
 		// res.end();
 	});
 })

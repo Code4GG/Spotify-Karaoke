@@ -86,27 +86,28 @@
 					console.log("singer added");
 				})
 				$.post("/api/users", newUser).then(function(data){
-					// alert('Adding User');
+					alert('Adding User');
 					console.log(data);
-				
-					const queryURL = 'https://itunes.apple.com/search?term=' + newUser.song_request + '&media=music&entity=song&limit=1'
-			
-					$.ajax({
-						url: queryURL,
-						method: "GET",
-						dataType: 'json'
-					}).done(function(response) {
-						console.log(response);
 
-						$('#artist').append(response.results[0].artistName);					
-						$('#album').append(response.results[0].collectionName);		
-						$('#country').append(response.results[0].country);			
-					    $('#genre').append(response.results[0].primaryGenreName);
-					    $('#album-cover').attr('src', response.results[0].artworkUrl100);
-						$('#album-cover').attr('alt', "album cover");
+					const queryURL = 'https://itunes.apple.com/search?term='+newUser.song_request +'&media=music&entity=song&limit=1';
++			
++					$.ajax({
++						url: queryURL,
++						method: "GET",
++						dataType: 'json'
++					}).done(function(response) {
++						console.log(response);
++
++						$('#artist').append(response.results[0].artistName);
++						$('#album').append(response.results[0].collectionName);
++						$('#country').append(response.results[0].country);
++						$('#genre').append(response.results[0].primaryGenreName);
++						$('#album-cover').attr('src', response.results[0].artworkUrl100);
++						$('#album-cover').attr('alt', "album cover");
++					})
 						
 					})
-				})
+				
 
 				 $('#inputName').val("");
 				 $('#inputNickname').val("");
@@ -138,6 +139,8 @@
 					$('#inputSong').val("");
 				}
 			}
+
+
 	})
 
 </script>
