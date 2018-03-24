@@ -57,7 +57,6 @@
 
 <script type="text/javascript">
 
-	let itunesData = [];
 
 	$('.sub-btn').on('click', function(event){
 		event.preventDefault();
@@ -99,16 +98,14 @@
 					}).done(function(response) {
 						console.log(response);
 
+						$('#artist').append(response.results[0].artistName);					
+						$('#album').append(response.results[0].collectionName);		
+						$('#country').append(response.results[0].country);			
+					    $('#genre').append(response.results[0].primaryGenreName);
+					    $('#album-cover').attr('src', response.results[0].artworkUrl100);
+						$('#album-cover').attr('alt', "album cover");
 						
-							itunesData.push(response.results[0].collectionName);
-							itunesData.push(response.results[0].country);
-							itunesData.push(response.results[0].primaryGenreName);
-							itunesData.push(response.results[0].artworkUrl100);
-							console.log(itunesData);
 					})
-					// $.post("/api/ituneData", ituneData).then(function(itunedata){
-					// 		console.log(itunedata);
-					// })
 				})
 
 				 $('#inputName').val("");
@@ -141,15 +138,6 @@
 					$('#inputSong').val("");
 				}
 			}
-			let itunesResponse = [];
-			// console.log(itunes);
-			for (let i = 0; i < itunesData; i++){
-				itunesResponse.push(itunesData[i]);
-				console.log(itunesResponse);
-			}
-			$.post("/api/ituneData", itunesResponse[0]).then(function(itunedata){
-							console.log(itunedata);
-					})
 	})
 
 </script>
