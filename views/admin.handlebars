@@ -123,22 +123,27 @@
 	$('.sub-btn-login').on('click', function(event){
 		event.preventDefault();
 
-		const email = $('#inputEmailLogin').val();
-		const pass = $('#inputPassLogin').val();
+		const loginUser = {
+		 email:$('#inputEmailLogin').val().trim(),
+		 pass: $('#inputPassLogin').val().trim()
+		}
 
 
 		function validation(){
-				return (email !== '' && pass !== '');
+				return (loginUser.email !== '' && loginUser.pass !== '');
 			}
-
-		$.get("/admin_access").then(function(data){
-				console.log(data);
-				// res.render('admin_access');
-		})
+	
 
 			console.log(validation());
 
 		if(validation()){
+			$.ajax('/api/login', {
+				type: "POST",
+				data: loginUser
+			}).then(
+			function(data){
+				window.location.replace("/admin_access");
+			})
 			$('#loginModal').modal('hide');
 			
 			$('.errorName').hide();
