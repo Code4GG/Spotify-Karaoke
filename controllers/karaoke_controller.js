@@ -113,7 +113,6 @@ router.post('/api/admins', function(req,res){
 });
 
 router.post('/api/login', function(req,res){
-	const loggedUser = req.body;
 	let reqPass = req.body.pass;
 	let reqEmail = req.body.email;
 	db.admins.findOne({
